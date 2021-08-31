@@ -1,10 +1,10 @@
 export interface CRUD {
   list: (limit: number, page: number) => Promise<any>;
   create: (resource: any) => Promise<any>;
-  put: (id: string, resource: any) => Promise<string>;
+  put: (id: string, resource: any) => Promise<any>;
   show: (id: string) => Promise<any>;
-  delete: (id: string) => Promise<string>;
-  patch: (id: string, resource: any) => Promise<string>;
+  delete: (id: string) => Promise<any>;
+  patch: (id: string, resource: any) => Promise<any>;
 }
 
 export interface Result {

@@ -1,5 +1,4 @@
 export interface CreateUserDto {
-  id: string;
   email: string;
   password: string;
   firstName?: string;
@@ -8,12 +7,12 @@ export interface CreateUserDto {
 }
 
 export interface PutUserDto {
-  id: string;
   email: string;
   password: string;
   firstName: string;
   lastName: string;
-  permissionLevel: number;
+  permissionFlags: number;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface PatchUserDto extends Partial<PutUserDto> {}

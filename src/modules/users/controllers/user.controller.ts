@@ -2,7 +2,8 @@ import { Request, Response } from 'express';
 import userService from '../services/user.service';
 import argon from 'argon2';
 import debug from 'debug';
-import { Result } from '../../../config/common.interface';
+import { Result } from '../../../common/interfaces/common.interface';
+import { PatchUserDto } from '../entities/user.dto';
 
 const log: debug.IDebugger = debug('app:user-controller');
 
@@ -73,6 +74,20 @@ class UserController {
       code: 200,
       status: 'success',
       message: 'delete user successfully',
+      data: null
+    };
+    res.status(200).send(result);
+  }
+
+  async updatePermissionFLags(req: Request, res: Response) {
+    const patchUserDto: PatchUserDto = {
+      permissionFlags: parseInt(req.params.permissionFlags),
+    };
+    log(await userService.patch(req.body.id, patchUserDto));
+    const result: Result = {
+      code: 200,
+      status: 'success',
+      message: 'update user permission successfully',
       data: null
     };
     res.status(200).send(result);
